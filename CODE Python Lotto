@@ -1,0 +1,35 @@
+#Wylosuj 6 liczb z zakresu 1-49 bez powtórzeń i je posortuj:
+import random
+losowanie=[]
+while len(losowanie)<6:
+    losowa = random.randint(1,49)
+    if losowa not in losowanie:
+        losowanie.append(losowa)
+losowanie.sort()
+
+#Gracz podaje 6 wytypowanych przez siebie liczb z zakresu 1-49 bez powtórzeń:
+moje = []
+print("Podaj swoje liczby w przedziale od 1 do 49: ")
+while len(moje) < 6:
+    liczba = int(input(f"Podaj liczbę {len(moje)+1}: "))
+    if (liczba >=1 and liczba <=49 and liczba not in moje):
+        moje.append(liczba)
+    else:
+        print("Spróbuj jeszcze raz, podałeś złą liczbę!")
+moje.sort()
+print(f"Moje liczby to: {moje}")
+
+#SPRAWDZANIE LICZBY TRAFIEŃ:
+trafienia = 0
+trafione_liczby=[]
+
+for liczby in moje:
+    if liczby in losowanie:
+        trafienia += 1
+        trafione_liczby.append(liczby)
+
+print(f"Wylosowane liczby to: {losowanie}")
+print(f"Trafienia: {trafienia}")
+print(f"Trafione liczby: {trafione_liczby}")
+if (trafienia==6):
+    print("Wygrałeś! TRAFIŁEŚ SZÓSTKĘ! ZAGRAJ!")
